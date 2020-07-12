@@ -1,0 +1,43 @@
+{
+  "name": "funksie",
+  "version": "1.0.0",
+  "description": "A Feature Policy plugin for hapi",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "lab -a @hapi/code -t 90 -L"
+  },
+  "engines": {
+    "node": ">= 8.9.0"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dnukumamras/funksie.git"
+  },
+  "keywords": [
+    "hapi",
+    "feature policy",
+    "plugin"
+  ],
+  "author": "Nathan LaFreniere <quitlahok@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dnukumamras/funksie/issues"
+  },
+  "homepage": "https://github.com/dnukumamras/funksie",
+  "devDependencies": {
+    "@hapi/code": "^8.0.1",
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/lab": "^22.0.3",
+    "@hapi/scooter": "^6.0.0",
+    "@hapi/vision": "^6.0.0",
+    "browser-agents": "^1.0.1",
+    "handlebars": "^4.7.3"
+  },
+  "dependencies": {
+    "@hapi/hoek": "^9.0.3",
+    "@hapi/joi": "^17.1.0"
+  }
+}
