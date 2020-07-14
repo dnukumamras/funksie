@@ -2,9 +2,23 @@
 
 A Feature Policy plugin for [hapi](https://github.com/hapijs/hapi).
 
-## Why the Name Funksie? 
+## Why the Name Funksie?
 
 In Afrikaans the word Funksie means feature and it sounds similar to [blankie](https://github.com/nlf/blankie) a repo from which a lot of the code was taken
+
+## What is Feature Policy?
+
+Feature policy is a HTTP response [header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Feature_Policy) that when set allows you to control which origins can use which features, both in the top-level page and in embedded frames.
+
+Feature Policy provides a mechanism to explicitly declare what functionality is used (or not used), throughout your website. With Feature Policy, you opt-in to a set of "policies" for the browser to enforce on specific features used throughout a website. These policies restrict what APIs the site can access or modify the browser's default behavior for certain features.
+
+Examples of what you can do with Feature Policy:
+
+- Change the default behavior of autoplay on mobile and third party videos.
+- Restrict a site from using sensitive APIs like magnetometer or microphone.
+- Controls whether the current document is allowed to use the Payment Request API. All our products and services at Credit Karma is free so we can set this to block
+
+Here's a [link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy#Directives) to the complete list.
 
 ### Usage
 
@@ -73,24 +87,24 @@ You may also set `config.plugins.funksie` equal to `false` on a route to disable
 
 ### Options
 
-* `accelerometerSrc`: Values for the `accelerometer` directive.
+* `accelerometerSrc`: Values for the `accelerometer` directive. Defaults to 'none'.
 * `ambientLightSensorSrc`: Values for the `ambient-light-sensor` directive.
 * `autoplaySrc`: Values for the `autoplay` directive.
-* `batterySrc`: Values for the `battery` directive.
-* `cameraSrc`: Values for the `camera` directive.
+* `batterySrc`: Values for the `battery` directive. Defaults to 'none'.
+* `cameraSrc`: Values for the `camera` directive. Defaults to 'none'.
 * `displayCaptureSrc`: Values for the `display-capture` directive.
 * `documentDomainSrc`: Values for the `document-domain` directive.
 * `encryptedMediaSrc`: Values for the `encrypted-media` directive.
 * `fullscreenSrc`: Values for the `fullscreen` directive.
-* `geolocationSrc`: Values for the `geolocation` directive.
-* `gyroscopeSrc`: Values for the `gyroscope` directive.
+* `geolocationSrc`: Values for the `geolocation` directive. Defaults to 'none'.
+* `gyroscopeSrc`: Values for the `gyroscope` directive. Defaults to 'none'.
 * `layoutAnimationsSrc`: Values for the `layout-animations` directive.
 * `legacyImageFormatsSrc`: Values for the `legacy-image-formats` directive.
-* `magnetometerSrc`: Values for the `magnetometer` directive.
-* `microphoneSrc`: Values for the `microphone` directive.
+* `magnetometerSrc`: Values for the `magnetometer` directive. Defaults to 'none'.
+* `microphoneSrc`: Values for the `microphone` directive. Defaults to 'none'.
 * `midiSrc`: Values for the `midi` directive.
 * `oversizedImagesSrc`: Values for the `oversized-images` directive.
-* `paymentSrc`: Values for the `payment` directive.
+* `paymentSrc`: Values for the `payment` directive. Defaults to 'none'.
 * `pictureInPictureSrc`: Values for the `picture-in-picture` directive.
 * `publickeyCredentialsGetSrc`: Values for the `publickey-credentials-get` directive.
 * `syncXhrSrc`: Values for the `sync-xhr` directive.

@@ -4,7 +4,7 @@
   "description": "A Feature Policy plugin for hapi",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -a @hapi/code -t 90 -L"
+    "test": "lab -a @hapi/code -t 95 -L"
   },
   "engines": {
     "node": ">= 8.9.0"
@@ -19,9 +19,10 @@
   "keywords": [
     "hapi",
     "feature policy",
-    "plugin"
+    "plugin",
+    "HTTP Feature Policy"
   ],
-  "author": "Nathan LaFreniere <quitlahok@gmail.com>",
+  "author": "Spashtata",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dnukumamras/funksie/issues"
