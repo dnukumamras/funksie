@@ -63,7 +63,7 @@ describe('Callbacks', () => {
         const fpCallback = function (req) {
 
             const options = {};
-            options.bananas = 'self';
+            options.bananas = true;
             return options;
         };
 

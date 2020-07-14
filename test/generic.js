@@ -218,6 +218,35 @@ describe('Generic headers', () => {
         expect(res.headers).to.not.include('feature-policy');
     });
 
+    it('does not crash when responding with an error', async () => {
+
+        const server = Hapi.server();
+        server.route({
+            method: 'GET',
+            path: '/',
+            handler: (request, h) => {
+
+                throw new Error('broken!');
+            }
+        });
+        await server.register([Scooter, Funksie]);
+        const res = await server.inject({
+            method: 'GET',
+            url: '/'
+        });
+
+        expect(res.statusCode).to.equal(500);
+        expect(res.headers).to.contain('feature-policy');
+        expect(res.headers['feature-policy']).to.contain('accelerometer \'none\'');
+        expect(res.headers['feature-policy']).to.contain('battery \'none\'');
+        expect(res.headers['feature-policy']).to.contain('camera \'none\'');
+        expect(res.headers['feature-policy']).to.contain('geolocation \'none\'');
+        expect(res.headers['feature-policy']).to.contain('gyroscope \'none\'');
+        expect(res.headers['feature-policy']).to.contain('magnetometer \'none\'');
+        expect(res.headers['feature-policy']).to.contain('microphone \'none\'');
+        expect(res.headers['feature-policy']).to.contain('payment \'none\'');
+    });
+
     it('can be disabled on a single route', async () => {
 
         const server = Hapi.server();
@@ -291,5 +320,50 @@ describe('Generic headers', () => {
         expect(res2.statusCode).to.equal(200);
         expect(res2.headers).to.contain('feature-policy');
         expect(res2.headers['feature-policy']).to.contain('battery www.google.com');
+    });
+
+    it('self disables when a route override is invalid', async () => {
+
+        const server = Hapi.server();
+        server.route(defaultRoute);
+        server.route({
+            method: 'GET',
+            path: '/invalid',
+            config: {
+                handler: () => {
+
+                    return 'invalid';
+                },
+                plugins: {
+                    funksie: {
+                        cameraSrc: true
+                    }
+                }
+            }
+        });
+        await server.register([Scooter, Funksie]);
+        const res = await server.inject({
+            method: 'GET',
+            url: '/'
+        });
+
+        expect(res.statusCode).to.equal(200);
+        expect(res.headers).to.contain('feature-policy');
+        expect(res.headers['feature-policy']).to.contain('accelerometer \'none\'');
+        expect(res.headers['feature-policy']).to.contain('battery \'none\'');
+        expect(res.headers['feature-policy']).to.contain('camera \'none\'');
+        expect(res.headers['feature-policy']).to.contain('geolocation \'none\'');
+        expect(res.headers['feature-policy']).to.contain('gyroscope \'none\'');
+        expect(res.headers['feature-policy']).to.contain('magnetometer \'none\'');
+        expect(res.headers['feature-policy']).to.contain('microphone \'none\'');
+        expect(res.headers['feature-policy']).to.contain('payment \'none\'');
+
+        const res2 = await server.inject({
+            method: 'GET',
+            url: '/invalid'
+        });
+
+        expect(res2.statusCode).to.equal(200);
+        expect(res2.headers).to.not.contain('feature-policy');
     });
 });
