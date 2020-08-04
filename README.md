@@ -16,7 +16,7 @@ Examples of what you can do with Feature Policy:
 
 - Change the default behavior of autoplay on mobile and third party videos.
 - Restrict a site from using sensitive APIs like magnetometer or microphone.
-- Controls whether the current document is allowed to use the Payment Request API. All our products and services at Credit Karma is free so we can set this to block
+- Controls whether the current document is allowed to use the Payment Request API. If all your products and services are free, you can set this to `none`
 
 Here's a [link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy#Directives) to the complete list.
 
